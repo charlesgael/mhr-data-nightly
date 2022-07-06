@@ -1,0 +1,33 @@
+{
+  "armors": [
+    {
+      "provider": "fextralife",
+      "type": "helm",
+      "url": "https://monsterhunterrise.wiki.fextralife.com/Head+Armor"
+    },
+    {
+      "provider": "fextralife",
+      "type": "chest",
+      "url": "https://monsterhunterrise.wiki.fextralife.com/Chest+Armor"
+    },
+    {
+      "provider": "fextralife",
+      "type": "arms",
+      "url": "https://monsterhunterrise.wiki.fextralife.com/Arms+Armor"
+    },
+    {
+      "provider": "fextralife",
+      "type": "waist",
+      "url": "https://monsterhunterrise.wiki.fextralife.com/Waist+Armor"
+    },
+    {
+      "provider": "fextralife",
+      "type": "legs",
+      "url": "https://monsterhunterrise.wiki.fextralife.com/Legs+Armor"
+    }
+  ],
+  "skills": {
+    "provider": "fextralife",
+    "url": "https://monsterhunterrise.wiki.fextralife.com/Skills"
+  }
+}

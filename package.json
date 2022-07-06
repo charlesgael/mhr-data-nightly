@@ -1,0 +1,28 @@
+{
+  "name": "mhr-data",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "main": "index.ts",
+  "scripts": {
+    "dev": "ts-node index.ts",
+    "test": "run-s test:*",
+    "test:lint": "eslint .",
+    "test:typing": "tsc --noEmit",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "cheerio": "1.0.0-rc.12"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.25.2",
+    "@types/node": "^18.0.3",
+    "eslint": "^8.19.0",
+    "npm-run-all": "^4.1.5",
+    "ts-node": "^10.8.2",
+    "typescript": "^4.7.4"
+  }
+}
