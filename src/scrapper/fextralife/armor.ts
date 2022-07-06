@@ -20,7 +20,7 @@ const socketsParse = (el: Cheerio<any>): Armor['sockets'] =>
       .map((it, idx) => ([`slot${idx + 1}`, it])),
   ) as any
 
-export function parseArmors(html: string, type: Armor['type']): Armor[] {
+export function parseArmors(html: string, armor_type: Armor['armor_type']): Armor[] {
   const $ = load(html)
   return $('.wiki_table tbody tr').map((_, row) => {
     const [name, skills, sockets, rarity, defense, fireRes, waterRes, lightningRes, iceRes, dragonRes] = $('td', row).map((_, it) => $(it)).toArray()
@@ -28,7 +28,7 @@ export function parseArmors(html: string, type: Armor['type']): Armor[] {
     // .map((i, col) => columnSpecific[i]($(col), $))
     // .toArray();
     return <Armor>{
-      type,
+      armor_type,
       name: textParse(name),
 
       rarity: numberParse(rarity),

@@ -5,7 +5,7 @@ function notImplemented(_url: string): any {
   throw new Error('Not implemented')
 }
 
-export function getArmorParser(provider: string): (html: string, type: Armor['type']) => Armor[] {
+export function getArmorParser(provider: string): (html: string, type: Armor['armor_type']) => Armor[] {
   switch (provider) {
     case 'fextralife': return fextralife.parseArmors
     default: return notImplemented

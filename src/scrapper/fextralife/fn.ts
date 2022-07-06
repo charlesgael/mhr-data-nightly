@@ -19,4 +19,4 @@ export const skillsParse = (el: Cheerio<any>): Armor['skills'] =>
           skill_name: fixSkillName(skill_name).trim(),
           levels: parseInt(levels),
         }))
-    : [{ skill_name: el.text().trim(), levels: 1 }]
+    : [{ skill_name: fixSkillName(el.text().trim()), levels: 1 }]
