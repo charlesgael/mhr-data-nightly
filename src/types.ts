@@ -4,8 +4,8 @@ export interface Skill {
 }
 
 export interface Decoration {
-  name: string
-  skill_name: string
+  // name, skill_name, level
+  [size: string]: [string, string, number]
 }
 
 type armorType = 'helm' | 'chest' | 'arms' | 'waist' | 'legs'

@@ -29,5 +29,9 @@
   "skills": {
     "provider": "fextralife",
     "url": "https://monsterhunterrise.wiki.fextralife.com/Skills"
+  },
+  "decorations": {
+    "provider": "fextralife",
+    "url": "https://monsterhunterrise.wiki.fextralife.com/Decorations"
   }
 }
