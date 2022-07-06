@@ -2,6 +2,6 @@
   "extends": "@antfu",
 
   "ignorePatterns": [
-    "output.json"
+    "data.json"
   ]
 }

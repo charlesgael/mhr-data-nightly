@@ -1,6 +1,6 @@
 name: Deploy Nightly
 on:
-  sechedule:
+  schedule:
     - cron: '0 2 * * *' # run at 2 AM UTC
 
 jobs:
@@ -21,7 +21,7 @@ jobs:
       # Build
       - name: Install
         run: pnpm install
-      
+
       - name: Build
         run: pnpm run build
 
