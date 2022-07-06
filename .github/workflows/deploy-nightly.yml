@@ -28,3 +28,15 @@ jobs:
       # Create asset
       - name: Make data
         run: node dist/index.js
+
+      # Update release
+      - name: Deploy data release
+        uses: WebFreak001/deploy-nightly@v1.1.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: https://uploads.github.com/repos/charlesgael/mhr-data-nightly/releases/71371698/assets{?name,label}
+          release_id: 71371698
+          asset_path: ./data.json
+          asset_name: data.json
+          asset_content-type: application/json
