@@ -1,6 +1,7 @@
 import type { Cheerio } from 'cheerio'
 import type { Armor } from '../../types'
 import { execAll } from '../util/execAll'
+import { textParse } from '../util/funcs'
 
 const FIX_SKILL_NAMES: Record<string, string> = {
   'Quick Sheath': 'Quick Sheathe',
@@ -14,9 +15,9 @@ export const fixSkillName = (name: string) => FIX_SKILL_NAMES[name] || name
 
 export const skillsParse = (el: Cheerio<any>): Armor['skills'] =>
   /x\d/.test(el.text())
-    ? [...execAll<'skill_name' | 'levels'>(el.text().trim(), /(?<skill_name>.*?)x(?<levels>\d+)/g)]
+    ? [...execAll<'skill_name' | 'levels'>(textParse(el), /(?<skill_name>.*?)( |\xA0)?x(?<levels>\d+)/g)]
         .map(({ groups: { skill_name, levels } }) => ({
           skill_name: fixSkillName(skill_name).trim(),
           levels: parseInt(levels),
         }))
-    : [{ skill_name: fixSkillName(el.text().trim()), levels: 1 }]
+    : [{ skill_name: fixSkillName(textParse(el)), levels: 1 }]

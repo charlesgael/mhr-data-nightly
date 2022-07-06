@@ -9,7 +9,7 @@ const jewelParse = (el: Cheerio<any>): number => parseInt(/\((?<level>\d+)\)/.ex
 export function parseDecorations(html: string): Decoration[] {
   const $ = load(html)
 
-  return $('.wiki_table tbody tr').map((_, row) => {
+  return $('.wiki_table:first tbody tr').map((_, row) => {
     const [name, slotLevel, /* rarity */, skill/* , description, maxLvl, crafting */] = $('td', row).map((_, it) => $(it)).toArray()
     const skills = skillsParse(skill)[0]
 
