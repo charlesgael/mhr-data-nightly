@@ -39,4 +39,4 @@ jobs:
           release_id: 71371698
           asset_path: ./data.json
           asset_name: data.json
-          asset_content-type: application/json
+          asset_content_type: application/json
