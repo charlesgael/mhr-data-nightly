@@ -10,14 +10,22 @@ const FIX_SKILL_NAMES: Record<string, string> = {
   'Thunder Resistance Skill': 'Thunder Resistance',
   'Ice Resistance Skill': 'Ice Resistance',
   'Dragon Resistance Skill': 'Dragon Resistance',
+  'Aim Booster': 'Ballistics',
 }
-export const fixSkillName = (name: string) => FIX_SKILL_NAMES[name] || name
+export const fixSkillName = (name: string) => {
+  name = name
+    .normalize('NFD')
+    .replace(/\p{Diacritic}/gu, '')
+    .replace(/[^a-z0-9() ]/gui, '')
+  return FIX_SKILL_NAMES[name] || name
+}
 
 export const skillsParse = (el: Cheerio<any>): Armor['skills'] =>
-  /x\d/.test(el.text())
-    ? [...execAll<'skill_name' | 'levels'>(textParse(el), /(?<skill_name>.*?)( |\xA0)?x(?<levels>\d+)/g)]
+  (/x[ \xA0]?\d/.test(el.text())
+    ? [...execAll<'skill_name' | 'levels'>(textParse(el), /(?<skill_name>.+?)[ \xA0]?x[ \xA0]?(?<levels>\d+)/g)]
         .map(({ groups: { skill_name, levels } }) => ({
           skill_name: fixSkillName(skill_name).trim(),
           levels: parseInt(levels),
         }))
-    : [{ skill_name: fixSkillName(textParse(el)), levels: 1 }]
+    : [{ skill_name: fixSkillName(textParse(el)), levels: 1 }])
+    .filter(it => !['', 'None'].includes(it.skill_name))
